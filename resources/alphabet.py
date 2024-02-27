@@ -58,8 +58,7 @@ class AlphabetList(MethodView):
             letter = LetterModel(
                 rgb,
                 alphabet=abc,
-                codepoint=unicode,
-                symbol=chr(unicode)
+                codepoint=unicode
             )
             letters.append(letter)
             unicode += 1

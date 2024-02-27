@@ -1,19 +1,21 @@
 from .base import BaseModel
 from db import db
 
+from sqlalchemy.dialects.postgresql import BYTEA
+
 class LetterModel(BaseModel):
     __tablename__ = "letter"
 
     id = db.Column(db.Integer, primary_key = True)
     codepoint = db.Column(db.Integer, nullable=False)  # UNICODE
-    symbol = db.Column(db.String(1)) # todo: make computed property
+    #symbol = db.Column(BYTEA)
     custom = db.Column(db.Boolean, default=False)
     red = db.Column(db.Integer, nullable=False)
     green = db.Column(db.Integer, nullable=False)
     blue = db.Column(db.Integer, nullable=False)
 
     alphabet_id = db.Column(
-        db.String(127), 
+        db.Integer, 
         db.ForeignKey("alphabet.id"), 
         unique = False, 
         nullable = False

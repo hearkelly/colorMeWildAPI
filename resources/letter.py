@@ -9,11 +9,7 @@ from db import db
 from sqlalchemy.exc import SQLAlchemyError
 
 blp = Blueprint("letters", __name__, description="Operations on letters")
-"""
-- get letter data
-- add custom letter to alphabet
-- update custom letter in alphabet
-"""
+
 @blp.route("/alphabet/<string:name>/letter/<int:unicode>")
 # using /alphabet/alpabet_name/letter/letter_codepoint
 # until i determine if nested routes work with flask-smorest
@@ -38,7 +34,7 @@ class Letter(MethodView):
         letter_colors = [[o.red,o.green,o.blue] for o in letters]
         new_color = color_unique(letter_colors)
         letter = LetterModel(
-            new_color,alphabet=abc,codepoint=unicode,symbol=chr(unicode), custom=True)
+            new_color,alphabet=abc,codepoint=unicode, custom=True)
         try:
             # abc.append(letter) TODO: PrettyPrinted says we can .append() like a list and the db will be updated.
             db.session.add(letter)
