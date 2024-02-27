@@ -11,7 +11,6 @@ class PlainLetterSchema(Schema):
     blue = fields.Int(dump_only=True)
 
 class PlainAlphabetSchema(Schema):
-    id = fields.Int(dump_only=True)
     name = fields.Str(dump_only=True)
     created_on = fields.DateTime(dump_only = True)
     updated_on = fields.DateTime(dump_only = True)
@@ -29,7 +28,6 @@ class LetterSchema(PlainLetterSchema):
 
 class CustomLetterSchema(LetterSchema):
     codepoint = fields.Int(required=True)
-
 
 class AlphabetSchema(PlainAlphabetSchema):
     letters = fields.List(fields.Nested(PlainLetterSchema()), dump_only = True)
