@@ -4,5 +4,7 @@ python-dotenv
 sqlalchemy
 flask-sqlalchemy
 flask-migrate
+gunicorn
 marshmallow
 psycopg2
+wonderwords
